@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
     task: String,
-    description: String
+    description: String,
 },{
-    versionKey:true
+    versionKey:false
 });
 
 const DataModel = mongoose.model('task', dataSchema);
