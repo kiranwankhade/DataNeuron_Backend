@@ -116,13 +116,15 @@ taskRouter.post("/create", async (req, res) => {
 taskRouter.patch("/update/:id", async (req, res) => {
   const dataID = req.params.id;
   const payload = req.body;
+  console.log('payload:', payload)
 
   try {
     const updatedTask = await DataModel.findByIdAndUpdate(dataID, payload, { new: true });
     if (!updatedTask) {
       return res.status(404).send({ message: "Task not found" });
+    }else{
+      await updateCountsInDatabase('update');
     }
-    await updateCountsInDatabase('update');
     res.send({ message: "Data updated", task: updatedTask });
   } catch (err) {
     res.status(400).send({ message: "Data not updated", error: err.message });
