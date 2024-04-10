@@ -73,7 +73,7 @@ taskRouter.get('/getCount', (req, res) => {
 
     //For calculating execution time of each API
     const endTime = new Date();
-    console.log(`Execution time for /api/getCount/:id: ${endTime - startTime}ms`);
+    console.log(`Execution time for /getCount/:id: ${endTime - startTime}ms`);
 });
 
 module.exports = {
